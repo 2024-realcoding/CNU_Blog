@@ -9,7 +9,7 @@ import Header from './components/Header';
 
 function App() {
   return (
-    <Router>
+    <Router basename={'CNU_BLOG/'}>
       <Routes>
         <Route element={<Header />}>
           <Route element={<Layout />}>
@@ -19,6 +19,7 @@ function App() {
           <Route path="/posts/:postId" element={<Post />} />
         </Route>
         {/*todo (5-1) Write 추가*/}
+        <Route path="/write" element={<Write />} />
       </Routes>
     </Router>
   );

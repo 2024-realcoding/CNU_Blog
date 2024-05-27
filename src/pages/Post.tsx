@@ -60,6 +60,7 @@ const Text = styled.p`
 `;
 
 const Post = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const { postId = '' } = params;
   const [post, setPost] = useState<IPost | null>(null);
@@ -67,6 +68,18 @@ const Post = () => {
   const fetchPostById = async (id: string) => {
     const { data } = await getPostById(id);
     setPost(data);
+  };
+
+  const requestDeletePostById = async () => {
+    await deletePostById(postId);
+    navigate('/');
+  };
+
+  const clickDeleteButton = () => {
+    const result = window.confirm('정말로 게시글을 삭제하시겠습니까?');
+    if (result) {
+      requestDeletePostById();
+    }
   };
 
   useEffect(() => {
@@ -90,8 +103,11 @@ const Post = () => {
           </Info>
           <div>
             {/*todo 수정/삭제 버튼 작성*/}
-            <TextButton>수정</TextButton>
-            <TextButton>삭제</TextButton>
+            <Link to="/write" state={{ postId }}>
+              <TextButton style={{ marginRight: 10 }}>수정</TextButton>
+            </Link>
+
+            <TextButton onClick={clickDeleteButton}>삭제</TextButton>
           </div>
         </Toolbar>
         {post?.tag && (
