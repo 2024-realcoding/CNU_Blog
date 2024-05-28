@@ -61,7 +61,7 @@ const Layout = () => {
         <div>
           <ProfilePicture
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC_bLt9VF3iyn1IjJ76Bshhaqh7ieek9YapJWR_cfZfg&s"
-            alt="프로필 사진"
+            alt="프로필 사진 "
           />
         </div>
         <div>
