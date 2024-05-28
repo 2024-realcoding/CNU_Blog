@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { deletePostById, getPostById } from '../api';
-import { IPost } from '../api/types';
 import NotFound from '../components/NotFound';
 import Tag from '../components/Tag';
 import useGetPostById from '../queries/useGetPostById.ts';
@@ -85,14 +82,14 @@ const Post = () => {
   return (
     <div style={{ margin: '5.5rem auto', width: '700px' }}>
       <div>
-        <Title>{post.title}</Title>
+        <Title>{post?.title}</Title>
         <Toolbar>
           <Info>
             <div>n분전</div>
           </Info>
           <div>
-            <Link to="/write" state={{ postId }}>
-              <TextButton style={{ marginRight: 10 }}>수정</TextButton>
+            <Link to="/write" state={{ postId }} style={{ marginRight: 10 }}>
+              <TextButton>수정</TextButton>
             </Link>
             <TextButton onClick={clickDeleteButton}>삭제</TextButton>
           </div>
@@ -104,7 +101,7 @@ const Post = () => {
         )}
       </div>
       <ContentsArea>
-        {post.contents.split('\n').map((text, index) => (
+        {post?.contents?.split('\n').map((text, index) => (
           <Text key={index}>{text}</Text>
         ))}
       </ContentsArea>
