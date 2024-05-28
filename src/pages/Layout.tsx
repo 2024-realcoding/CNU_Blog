@@ -13,11 +13,9 @@ const Nav = styled.div`
   font-weight: 600;
   margin: auto;
   padding-top: 20px;
+
   a {
     color: #777;
-  }
-  .active {
-    color: rgb(50, 148, 248);
   }
 `;
 
