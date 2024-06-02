@@ -1,5 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
+import profilePic from './cardi_B.jpg';
+
 
 const Nav = styled.div`
   display: flex;
@@ -58,16 +60,21 @@ const Layout = () => {
   return (
     <div>
       <Profile>
-        {/*todo (1) 프로필 꾸미기*/}
         <div>
-          <ProfilePicture src="" alt="프로필 사진" />
+          <ProfilePicture
+            src={profilePic}
+            alt="프로필 사진"
+          />
         </div>
         <div>
-          <Name>이름</Name>
-          <Description>설명</Description>
+          <Name>효은</Name>
+          <Description>안냐세여? 카디비 입니다.</Description>
         </div>
       </Profile>
-      <Nav>{/*todo (2) 메뉴 작성*/}</Nav>
+      <Nav>
+        <NavLink to="/">포스트</NavLink>
+        <NavLink to="/resume">소개</NavLink>
+      </Nav>
       <Outlet />
     </div>
   );
